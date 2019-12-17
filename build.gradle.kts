@@ -28,3 +28,8 @@ dependencies {
     // Use the Kotlin JUnit integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
 }
+
+application {
+    // Define the main class for the application.
+    mainClassName = "yacc.Main"
+}

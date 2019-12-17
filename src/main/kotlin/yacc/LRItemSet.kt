@@ -4,7 +4,9 @@ import FINAL_SYMBOL
 import yacc.Symbol.*
 import java.util.*
 
-data class LRItemSet(private val grammar: Grammar, val id: Int) {
+class LRItemSet(private val grammar: Grammar) {
+
+    var id: Int = 0
 
     val itemSet: MutableSet<LRItem> = mutableSetOf()
 
@@ -30,7 +32,12 @@ data class LRItemSet(private val grammar: Grammar, val id: Int) {
             // B -> y
             for (prod in grammar.prodsDeriveFrom(symbol as NonterminalSymbol)) {
                 // b in FIRST(cd)
-                for (termSym in grammar.first(listOf(item.symbolAcrossDot, item.lookAheadSymbol))) {
+                val symList: List<Symbol> =
+                        if (item.symbolAcrossDot == null)
+                            listOf(item.lookAheadSymbol)
+                        else
+                            listOf(item.symbolAcrossDot!!, item.lookAheadSymbol)
+                for (termSym in grammar.first(symList)) {
                     // B -> .y, b
                     val newItem = LRItem(prod, termSym, 0)
                     if (newItem in itemSet) continue
@@ -42,11 +49,11 @@ data class LRItemSet(private val grammar: Grammar, val id: Int) {
         return this
     }
 
-    fun goto(sym: Symbol, id: Int): LRItemSet {
+    fun goto(sym: Symbol): LRItemSet {
         require(sym in symbolsBehindDot) {
             "$sym is not behind dot"
         }
-        val itemSet = LRItemSet(grammar, id)
+        val itemSet = LRItemSet(grammar)
         for (item in this.itemSet) {
             if (item.symbolBehindDot == sym) {
                 itemSet.addItem(LRItem(item.production, item.lookAheadSymbol, item.dotIndex + 1))
@@ -75,6 +82,10 @@ data class LRItemSet(private val grammar: Grammar, val id: Int) {
 
     override fun hashCode(): Int {
         return itemSet.hashCode()
+    }
+
+    override fun toString(): String {
+        return "LRItemSet(id=$id, itemSet=$itemSet)"
     }
 
 

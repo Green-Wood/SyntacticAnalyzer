@@ -1,53 +1,50 @@
 package yacc
 import FINAL_SYMBOL
 import yacc.Symbol.*
-import java.lang.invoke.MutableCallSite
 import java.util.*
 
 data class DirectEdge(val from: Int, val to: Int, val symbol: Symbol)
 
 class GOTOGraph(grammar: Grammar) {
-    val idSetMap: MutableMap<Int, LRItemSet> = mutableMapOf()
+    val setList: MutableList<LRItemSet> = mutableListOf()
     val adjacent: MutableMap<Int, MutableSet<DirectEdge>> = mutableMapOf()
 
     val itemSets: Iterable<LRItemSet>
-        get() = idSetMap.values
+        get() = setList
 
     val edges: Iterable<DirectEdge>
         get() = adjacent.flatMap { it.value }
 
     init {
-        var id = 0
-        val initSet = LRItemSet(grammar, id)
+        val initSet = LRItemSet(grammar)
         for (prod in grammar.startProds) {
             initSet.addItem(LRItem(prod, TerminalSymbol(FINAL_SYMBOL), 0))
         }
         initSet.closure()
 
-        val setQueue: Deque<LRItemSet> = ArrayDeque()
+        val setQueue: Deque<LRItemSet> = ArrayDeque(setOf(initSet))
 
-        idSetMap[id] = initSet
-        setQueue.add(initSet)
+        initSet.id = setList.size
+        setList.add(initSet)
 
         while (setQueue.isNotEmpty()) {
             val currSet: LRItemSet = setQueue.poll()
+            val adjSet = adjacent[currSet.id] ?: mutableSetOf()
+
             for (sym in currSet.symbolsBehindDot) {
-                id += 1
-                val reachable = currSet.goto(sym, id)
-                if (idSetMap.containsValue(reachable)) {
-                    id -= 1
-                } else {
-                    idSetMap[id] = reachable
+                val reachable = currSet.goto(sym)
+                if (reachable !in setList) {
+                    reachable.id = setList.size
+                    setList.add(reachable)
                     setQueue.add(reachable)
                 }
-                // set relationship
-                val adjSet = adjacent[currSet.id] ?: mutableSetOf()
-                adjSet.add(DirectEdge(currSet.id, id, sym))
-                adjacent[currSet.id] = adjSet
+                adjSet.add(DirectEdge(currSet.id, setList.indexOf(reachable), sym))
             }
+
+            adjacent[currSet.id] = adjSet
         }
 
-        assert(idSetMap.values.size == idSetMap.values.toSet().size) {
+        assert(setList.size == setList.toSet().size) {
             "Duplicate set exits in graph"
         }
     }

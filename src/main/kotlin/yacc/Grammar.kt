@@ -47,6 +47,13 @@ class Grammar(grammarString: String) {
 
     fun prodsDeriveFrom(symbol: NonterminalSymbol): List<Production> = prods.filter { it.symbol == symbol }
 
+    fun getOperator(id: Int): String {
+        require(prods.size > id && prods[id].derive.size > 1) {
+            "No infix operator exist on id: $id"
+        }
+        return prods[id].derive[1].content
+    }
+
     /**
      * find first terminal symbol of seq like (iSeS)
      */

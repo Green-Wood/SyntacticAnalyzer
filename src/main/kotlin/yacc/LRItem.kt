@@ -24,13 +24,13 @@ data class LRItem(
     /**
      * A -> a.Bc   this will return c
      */
-    val symbolAcrossDot: Symbol
+    val symbolAcrossDot: Symbol?
         get() {
             require(dotIndex < production.derive.size) {
                 "cannot get across symbol when dot is last like iSaS."
             }
             return when(dotIndex) {
-                production.derive.size - 1 -> TerminalSymbol(FINAL_SYMBOL)
+                production.derive.size - 1 -> null
                 else -> production.derive[dotIndex + 1]
             }
         }

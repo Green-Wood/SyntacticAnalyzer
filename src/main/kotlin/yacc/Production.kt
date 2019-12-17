@@ -24,6 +24,10 @@ class Production(symbol: String, deriveString: String) {
         }
     }
 
+    fun getHumanString(): String =
+         "${symbol.content} -> ${derive.joinToString(separator = " ") { it.content }}"
+
+
     override fun toString(): String {
         return "Prod(symbol=${symbol.content}, derive=${derive.map { it.content }})"
     }
