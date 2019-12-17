@@ -19,7 +19,7 @@ sealed class Symbol(val content: String) {
     }
 
     override fun toString(): String {
-        return "yacc.Symbol('$content')"
+        return "Symbol('$content')"
     }
 
 }

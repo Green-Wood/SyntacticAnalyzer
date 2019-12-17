@@ -6,6 +6,7 @@ import yacc.Symbol.*
 
 class Grammar(grammarString: String) {
     val prods: List<Production>
+    val startProds: List<Production>     // productions like {START} -> {S}
     private val alertMsg = "$ALL_START_SYMBOL cannot be used as grammar definition, please change to another one."
 
     init {
@@ -30,7 +31,7 @@ class Grammar(grammarString: String) {
         }
 
         // should not exist in other production's derivation part
-        val startProduction = tempProds
+        startProds = tempProds
                 .map { it.symbol }
                 .toSet()
                 .filter { symbol ->
@@ -39,10 +40,17 @@ class Grammar(grammarString: String) {
                 }
                 .map { Production(ALL_START_SYMBOL, "{${it.content}}") }
 
-        prods = startProduction + tempProds
+        prods = startProds + tempProds
     }
 
-    fun first(symbols: List<Symbol>): MutableSet<TerminalSymbol> {
+    fun indexOf(production: Production) = prods.indexOf(production)
+
+    fun prodsDeriveFrom(symbol: NonterminalSymbol): List<Production> = prods.filter { it.symbol == symbol }
+
+    /**
+     * find first terminal symbol of seq like (iSeS)
+     */
+    fun first(symbols: List<Symbol>): Set<TerminalSymbol> {
         require(symbols.isNotEmpty()) {
             "Cannot find first() for an empty list<yacc.Symbol>"
         }
@@ -51,7 +59,7 @@ class Grammar(grammarString: String) {
         val firstSym = symbols.first()
 
         // return if first symbol is terminal symbol
-        if (firstSym is TerminalSymbol) return mutableSetOf(firstSym)
+        if (firstSym is TerminalSymbol) return setOf(firstSym)
 
         // find first(firstSym)
         val termSet = mutableSetOf<TerminalSymbol>()
@@ -68,10 +76,10 @@ class Grammar(grammarString: String) {
         if (!leftTermSet.contains(EpsilonSymbol())) {
             termSet.remove(EpsilonSymbol())
         }
-        return (termSet + leftTermSet).toMutableSet()
+        return termSet + leftTermSet
     }
 
     override fun toString(): String {
-        return "yacc.Grammar(prods=$prods)"
+        return "Grammar(prods=$prods)"
     }
 }

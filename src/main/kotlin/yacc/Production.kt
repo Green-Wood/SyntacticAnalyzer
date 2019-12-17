@@ -25,6 +25,24 @@ class Production(symbol: String, deriveString: String) {
     }
 
     override fun toString(): String {
-        return "yacc.Production(symbol=$symbol, derive=$derive)"
+        return "Prod(symbol=${symbol.content}, derive=${derive.map { it.content }})"
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is Production) return false
+
+        if (symbol != other.symbol) return false
+        if (derive != other.derive) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = symbol.hashCode()
+        result = 31 * result + derive.hashCode()
+        return result
+    }
+
+
 }
