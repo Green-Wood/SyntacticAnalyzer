@@ -1,0 +1,5 @@
+Token{pattern='primitive_type', lexeme='int', id=0}
+Token{pattern='id', lexeme='a', id=0}
+Token{pattern='assignment', lexeme='=', id=0}
+Token{pattern='number', lexeme='3', id=0}
+Token{pattern='semicolon', lexeme=';', id=0}

@@ -8,8 +8,13 @@ internal class GOTOGraphTest {
     @Test
     fun testInitGraph() {
         val grammarString = """
-            {S} -> {A} a | b {A} c | d c | b d a
-            {A} -> d
+            S 
+                : A 'a' 
+                | 'b' A 'c' 
+                | 'd' 'c' 
+                | 'b' 'd' 'a'
+                ;
+            A : 'd'
         """.trimIndent()
         val grammar = Grammar(grammarString)
         val graph = GOTOGraph(grammar)
@@ -22,9 +27,9 @@ internal class GOTOGraphTest {
     @Test
     fun testLRGraph() {
         val grammarString = """
-            {S} -> {A} a | b {A} c | {B} c | b {B} a
-            {A} -> d
-            {B} -> d
+            S : A 'a' | 'b' A 'c' | B 'c' | 'b' B 'a';
+            A : 'd';
+            B : 'd'
         """.trimIndent()
         val grammar = Grammar(grammarString)
         val graph = GOTOGraph(grammar)
@@ -35,14 +40,14 @@ internal class GOTOGraphTest {
     @Test
     fun testLRGraphRecursive() {
         val grammarString = """
-            {S} -> {S} {A} | {A}
-            {A} -> a
+            S : S A | A;
+            A : 'a'
         """.trimIndent()
         val grammar = Grammar(grammarString)
         val graph = GOTOGraph(grammar)
         assertEquals(5, graph.setList.size)
         assertEquals(5, graph.adjacent.values.flatten().size)
-        val testSet: Set<DirectEdge> = setOf(DirectEdge(1, 3, Symbol.TerminalSymbol("a")),
+        val testSet: Set<DirectEdge> = setOf(DirectEdge(1, 3, Symbol.TerminalSymbol("'a'")),
                 DirectEdge(1, 4, Symbol.NonterminalSymbol("A")))
         assertEquals(testSet, graph.adjacent[1]!!)
     }
@@ -50,14 +55,14 @@ internal class GOTOGraphTest {
     @Test
     fun testLRGraphAmbiguous() {
         val grammarString = """
-            {E} -> {E} * {E} | {E} + {E} | id
+            E : E '*' E | E '+' E | 'id'
         """.trimIndent()
         val grammar = Grammar(grammarString)
         val graph = GOTOGraph(grammar)
         assertEquals(7, graph.setList.size)
         assertEquals(12, graph.adjacent.values.flatten().size)
-        val testSet: Set<DirectEdge> = setOf(DirectEdge(5, 3, Symbol.TerminalSymbol("*")),
-                DirectEdge(5, 4, Symbol.NonterminalSymbol("+")))
+        val testSet: Set<DirectEdge> = setOf(DirectEdge(5, 3, Symbol.TerminalSymbol("'*'")),
+                DirectEdge(5, 4, Symbol.NonterminalSymbol("'+'")))
         assertEquals(testSet, graph.adjacent[5]!!)
     }
 }

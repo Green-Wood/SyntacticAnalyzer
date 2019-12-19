@@ -17,9 +17,13 @@ class Grammar(grammarString: String) {
         }
 
         val tempProds = mutableListOf<Production>()
-        for (line in grammarString.lines()) {
+        for (line in grammarString.split("\\s*;\\s*".toRegex())) {
             // E -> {E} * {E} | {E} + {E}
-            val (symbol, derive) = line.split("\\s*->\\s*".toRegex())
+            if (line.isEmpty()) continue
+            require(":" in line) {
+                "no ':' in the production"
+            }
+            val (symbol, derive) = line.split("\\s*:\\s*".toRegex())
             checkSymbol(symbol)
 
             for (gen in derive.split("\\s*\\|\\s*".toRegex())) {
@@ -38,7 +42,7 @@ class Grammar(grammarString: String) {
                     tempProds.filter { it.symbol != symbol  } // except it self
                             .all { !it.derive.contains(symbol) }
                 }
-                .map { Production(ALL_START_SYMBOL, "{${it.content}}") }
+                .map { Production(ALL_START_SYMBOL, it.content) }
 
         prods = startProds + tempProds
     }

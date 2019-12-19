@@ -2,7 +2,7 @@ package yacc
 
 import FINAL_SYMBOL
 import OPERATORS
-import java.lang.Exception
+import yacc.exception.ReduceException
 import java.util.*
 import kotlin.math.min
 
@@ -39,7 +39,7 @@ sealed class Action(val id: Int) {
 
 class AnalyzeTable(grammarString: String) {
     val table: MutableMap<Pair<Int, Symbol>, Action> = mutableMapOf()
-    val grammar: Grammar = Grammar(grammarString)
+    private val grammar: Grammar = Grammar(grammarString)
 
     init {
         val graph = GOTOGraph(grammar)
@@ -70,16 +70,6 @@ class AnalyzeTable(grammarString: String) {
                 is Symbol.NonterminalSymbol -> table[key] = Action.GOTO(to)
             }
         }
-    }
-
-    /**
-     * replace target first in old list with new string
-     */
-    private fun replaceFirst(old: List<String>, target: List<String>, new: String): List<String> {
-        val index = old
-                .withIndex()
-                .find { old.subList(it.index, it.index + target.size) == target }
-        return old.subList(0, index!!.index) + listOf(new) + old.subList(index.index + target.size, old.size)
     }
 
     /**
@@ -131,12 +121,26 @@ class AnalyzeTable(grammarString: String) {
                     // t is stack peek, so push(GOTO[t, A])
                     stateStack.push(table[stateStack.peek() to prod.symbol]!!.id)
                     res.add("reduce: " + prod.getHumanString())
+                    res.add("")
                 }
                 is Action.ACC -> {
                     res.add("result: " + tempTokens.joinToString(separator = " "))
                     isAcc = true
                 }
-                null -> throw Exception("坏了")
+                null -> {
+                    val reduced =
+                            if(res.isNotEmpty())
+                                "Part of input have been reduced\n" + res.joinToString("\n") + "\n"
+                            else "\n"
+                    val pointer = " ".repeat(tokens.take(scanner).sumBy { it.length + 1 }) + "^"
+                    val error = """Reduce broken at: 
+                        |   ${tokens.joinToString(" ")}
+                        |   $pointer
+                        |   please check your input!!!
+                        |
+                        """.trimMargin()
+                    throw ReduceException(reduced + error)
+                }
             }
         }
         return res

@@ -1,0 +1,313 @@
+sentence: 'primitive_type' 'id' 'assignment' 'number' 'add_op' 'number' 'add_op' 'number' 'semicolon' 'primitive_type' 'id' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: declaration -> 'primitive_type' 'id'
+
+sentence: declaration 'assignment' 'number' 'add_op' 'number' 'add_op' 'number' 'semicolon' 'primitive_type' 'id' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: primary_expression -> 'number'
+
+sentence: declaration 'assignment' primary_expression 'add_op' 'number' 'add_op' 'number' 'semicolon' 'primitive_type' 'id' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: unary_expression -> primary_expression
+
+sentence: declaration 'assignment' unary_expression 'add_op' 'number' 'add_op' 'number' 'semicolon' 'primitive_type' 'id' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: multiplicative_expression -> unary_expression
+
+sentence: declaration 'assignment' multiplicative_expression 'add_op' 'number' 'add_op' 'number' 'semicolon' 'primitive_type' 'id' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: additive_expression -> multiplicative_expression
+
+sentence: declaration 'assignment' additive_expression 'add_op' 'number' 'add_op' 'number' 'semicolon' 'primitive_type' 'id' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: primary_expression -> 'number'
+
+sentence: declaration 'assignment' additive_expression 'add_op' primary_expression 'add_op' 'number' 'semicolon' 'primitive_type' 'id' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: unary_expression -> primary_expression
+
+sentence: declaration 'assignment' additive_expression 'add_op' unary_expression 'add_op' 'number' 'semicolon' 'primitive_type' 'id' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: multiplicative_expression -> unary_expression
+
+sentence: declaration 'assignment' additive_expression 'add_op' multiplicative_expression 'add_op' 'number' 'semicolon' 'primitive_type' 'id' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: additive_expression -> additive_expression 'add_op' multiplicative_expression
+
+sentence: declaration 'assignment' additive_expression 'add_op' 'number' 'semicolon' 'primitive_type' 'id' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: primary_expression -> 'number'
+
+sentence: declaration 'assignment' additive_expression 'add_op' primary_expression 'semicolon' 'primitive_type' 'id' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: unary_expression -> primary_expression
+
+sentence: declaration 'assignment' additive_expression 'add_op' unary_expression 'semicolon' 'primitive_type' 'id' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: multiplicative_expression -> unary_expression
+
+sentence: declaration 'assignment' additive_expression 'add_op' multiplicative_expression 'semicolon' 'primitive_type' 'id' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: additive_expression -> additive_expression 'add_op' multiplicative_expression
+
+sentence: declaration 'assignment' additive_expression 'semicolon' 'primitive_type' 'id' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: shift_expression -> additive_expression
+
+sentence: declaration 'assignment' shift_expression 'semicolon' 'primitive_type' 'id' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: relational_expression -> shift_expression
+
+sentence: declaration 'assignment' relational_expression 'semicolon' 'primitive_type' 'id' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: equality_expression -> relational_expression
+
+sentence: declaration 'assignment' equality_expression 'semicolon' 'primitive_type' 'id' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: bool_expression -> equality_expression
+
+sentence: declaration 'assignment' bool_expression 'semicolon' 'primitive_type' 'id' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: assignment_stmt -> declaration 'assignment' bool_expression 'semicolon'
+
+sentence: assignment_stmt 'primitive_type' 'id' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: stmt -> assignment_stmt
+
+sentence: stmt 'primitive_type' 'id' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: stmts -> stmt
+
+sentence: stmts 'primitive_type' 'id' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: declaration -> 'primitive_type' 'id'
+
+sentence: stmts declaration 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: declaration_stmt -> declaration 'semicolon'
+
+sentence: stmts declaration_stmt 'id' 'assignment' 'literal' 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: stmt -> declaration_stmt
+
+sentence: stmts stmt 'id' 'assignment' 'literal' 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: stmts -> stmts stmt
+
+sentence: stmts 'id' 'assignment' 'literal' 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: primary_expression -> 'literal'
+
+sentence: stmts 'id' 'assignment' primary_expression 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: unary_expression -> primary_expression
+
+sentence: stmts 'id' 'assignment' unary_expression 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: multiplicative_expression -> unary_expression
+
+sentence: stmts 'id' 'assignment' multiplicative_expression 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: additive_expression -> multiplicative_expression
+
+sentence: stmts 'id' 'assignment' additive_expression 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: shift_expression -> additive_expression
+
+sentence: stmts 'id' 'assignment' shift_expression 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: relational_expression -> shift_expression
+
+sentence: stmts 'id' 'assignment' relational_expression 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: equality_expression -> relational_expression
+
+sentence: stmts 'id' 'assignment' equality_expression 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: bool_expression -> equality_expression
+
+sentence: stmts 'id' 'assignment' bool_expression 'semicolon' 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: assignment_stmt -> 'id' 'assignment' bool_expression 'semicolon'
+
+sentence: stmts assignment_stmt 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: stmt -> assignment_stmt
+
+sentence: stmts stmt 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: stmts -> stmts stmt
+
+sentence: stmts 'while' 'left_pare' 'id' 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: primary_expression -> 'id'
+
+sentence: stmts 'while' 'left_pare' primary_expression 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: unary_expression -> primary_expression
+
+sentence: stmts 'while' 'left_pare' unary_expression 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: multiplicative_expression -> unary_expression
+
+sentence: stmts 'while' 'left_pare' multiplicative_expression 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: additive_expression -> multiplicative_expression
+
+sentence: stmts 'while' 'left_pare' additive_expression 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: shift_expression -> additive_expression
+
+sentence: stmts 'while' 'left_pare' shift_expression 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: relational_expression -> shift_expression
+
+sentence: stmts 'while' 'left_pare' relational_expression 'compare_op' 'number' 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: primary_expression -> 'number'
+
+sentence: stmts 'while' 'left_pare' relational_expression 'compare_op' primary_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: unary_expression -> primary_expression
+
+sentence: stmts 'while' 'left_pare' relational_expression 'compare_op' unary_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: multiplicative_expression -> unary_expression
+
+sentence: stmts 'while' 'left_pare' relational_expression 'compare_op' multiplicative_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: additive_expression -> multiplicative_expression
+
+sentence: stmts 'while' 'left_pare' relational_expression 'compare_op' additive_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: shift_expression -> additive_expression
+
+sentence: stmts 'while' 'left_pare' relational_expression 'compare_op' shift_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: relational_expression -> relational_expression 'compare_op' shift_expression
+
+sentence: stmts 'while' 'left_pare' relational_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: equality_expression -> relational_expression
+
+sentence: stmts 'while' 'left_pare' equality_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: bool_expression -> equality_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' 'id' 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: primary_expression -> 'id'
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' primary_expression 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: unary_expression -> primary_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' unary_expression 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: multiplicative_expression -> unary_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' multiplicative_expression 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: additive_expression -> multiplicative_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' additive_expression 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: shift_expression -> additive_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' shift_expression 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: relational_expression -> shift_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' relational_expression 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: equality_expression -> relational_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' equality_expression 'equality_op' 'number' 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: primary_expression -> 'number'
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' equality_expression 'equality_op' primary_expression 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: unary_expression -> primary_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' equality_expression 'equality_op' unary_expression 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: multiplicative_expression -> unary_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' equality_expression 'equality_op' multiplicative_expression 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: additive_expression -> multiplicative_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' equality_expression 'equality_op' additive_expression 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: shift_expression -> additive_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' equality_expression 'equality_op' shift_expression 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: relational_expression -> shift_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' equality_expression 'equality_op' relational_expression 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: equality_expression -> equality_expression 'equality_op' relational_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' equality_expression 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: bool_expression -> equality_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: primary_expression -> 'number'
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'id' 'assignment' primary_expression 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: unary_expression -> primary_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'id' 'assignment' unary_expression 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: multiplicative_expression -> unary_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'id' 'assignment' multiplicative_expression 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: additive_expression -> multiplicative_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'id' 'assignment' additive_expression 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: shift_expression -> additive_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'id' 'assignment' shift_expression 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: relational_expression -> shift_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'id' 'assignment' relational_expression 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: equality_expression -> relational_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'id' 'assignment' equality_expression 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: bool_expression -> equality_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'id' 'assignment' bool_expression 'semicolon' 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: assignment_stmt -> 'id' 'assignment' bool_expression 'semicolon'
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' assignment_stmt 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: stmt -> assignment_stmt
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmt 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: stmts -> stmt
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmts 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' 'number' 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: primary_expression -> 'number'
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmts 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' primary_expression 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: unary_expression -> primary_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmts 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' unary_expression 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: multiplicative_expression -> unary_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmts 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' multiplicative_expression 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: additive_expression -> multiplicative_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmts 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' additive_expression 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: shift_expression -> additive_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmts 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' shift_expression 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: relational_expression -> shift_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmts 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' relational_expression 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: equality_expression -> relational_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmts 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' equality_expression 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: bool_expression -> equality_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmts 'right_cur_bra' 'else' 'left_cur_bra' 'id' 'assignment' bool_expression 'semicolon' 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: assignment_stmt -> 'id' 'assignment' bool_expression 'semicolon'
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmts 'right_cur_bra' 'else' 'left_cur_bra' assignment_stmt 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: stmt -> assignment_stmt
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmts 'right_cur_bra' 'else' 'left_cur_bra' stmt 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: stmts -> stmt
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmts 'right_cur_bra' 'else' 'left_cur_bra' stmts 'id' 'assignment' 'literal' 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: primary_expression -> 'literal'
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmts 'right_cur_bra' 'else' 'left_cur_bra' stmts 'id' 'assignment' primary_expression 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: unary_expression -> primary_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmts 'right_cur_bra' 'else' 'left_cur_bra' stmts 'id' 'assignment' unary_expression 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: multiplicative_expression -> unary_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmts 'right_cur_bra' 'else' 'left_cur_bra' stmts 'id' 'assignment' multiplicative_expression 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: additive_expression -> multiplicative_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmts 'right_cur_bra' 'else' 'left_cur_bra' stmts 'id' 'assignment' additive_expression 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: shift_expression -> additive_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmts 'right_cur_bra' 'else' 'left_cur_bra' stmts 'id' 'assignment' shift_expression 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: relational_expression -> shift_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmts 'right_cur_bra' 'else' 'left_cur_bra' stmts 'id' 'assignment' relational_expression 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: equality_expression -> relational_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmts 'right_cur_bra' 'else' 'left_cur_bra' stmts 'id' 'assignment' equality_expression 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: bool_expression -> equality_expression
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmts 'right_cur_bra' 'else' 'left_cur_bra' stmts 'id' 'assignment' bool_expression 'semicolon' 'right_cur_bra' 'right_cur_bra' $
+reduce: assignment_stmt -> 'id' 'assignment' bool_expression 'semicolon'
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmts 'right_cur_bra' 'else' 'left_cur_bra' stmts assignment_stmt 'right_cur_bra' 'right_cur_bra' $
+reduce: stmt -> assignment_stmt
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmts 'right_cur_bra' 'else' 'left_cur_bra' stmts stmt 'right_cur_bra' 'right_cur_bra' $
+reduce: stmts -> stmts stmt
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmts 'right_cur_bra' 'else' 'left_cur_bra' stmts 'right_cur_bra' 'right_cur_bra' $
+reduce: if_else_stmt -> 'if' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmts 'right_cur_bra' 'else' 'left_cur_bra' stmts 'right_cur_bra'
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' if_else_stmt 'right_cur_bra' $
+reduce: stmt -> if_else_stmt
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmt 'right_cur_bra' $
+reduce: stmts -> stmt
+
+sentence: stmts 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmts 'right_cur_bra' $
+reduce: while_stmt -> 'while' 'left_pare' bool_expression 'right_pare' 'left_cur_bra' stmts 'right_cur_bra'
+
+sentence: stmts while_stmt $
+reduce: stmt -> while_stmt
+
+sentence: stmts stmt $
+reduce: stmts -> stmts stmt
+
+sentence: stmts $
+reduce: grammar -> stmts
+
+result: grammar $

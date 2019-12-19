@@ -1,5 +1,4 @@
-val ALL_START_SYMBOL = "{START}"    // cannot be used in user grammar definition
-val ALL_START_CONTENT = "START"
+val ALL_START_SYMBOL = "START"    // cannot be used in user grammar definition
 val FINAL_SYMBOL = "$"
 val OPERATORS = mapOf(
         "*" to 2,

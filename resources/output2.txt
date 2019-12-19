@@ -1,0 +1,40 @@
+sentence: 'primitive_type' 'id' 'assignment' 'number' 'semicolon' $
+reduce: declaration -> 'primitive_type' 'id'
+
+sentence: declaration 'assignment' 'number' 'semicolon' $
+reduce: primary_expression -> 'number'
+
+sentence: declaration 'assignment' primary_expression 'semicolon' $
+reduce: unary_expression -> primary_expression
+
+sentence: declaration 'assignment' unary_expression 'semicolon' $
+reduce: multiplicative_expression -> unary_expression
+
+sentence: declaration 'assignment' multiplicative_expression 'semicolon' $
+reduce: additive_expression -> multiplicative_expression
+
+sentence: declaration 'assignment' additive_expression 'semicolon' $
+reduce: shift_expression -> additive_expression
+
+sentence: declaration 'assignment' shift_expression 'semicolon' $
+reduce: relational_expression -> shift_expression
+
+sentence: declaration 'assignment' relational_expression 'semicolon' $
+reduce: equality_expression -> relational_expression
+
+sentence: declaration 'assignment' equality_expression 'semicolon' $
+reduce: bool_expression -> equality_expression
+
+sentence: declaration 'assignment' bool_expression 'semicolon' $
+reduce: assignment_stmt -> declaration 'assignment' bool_expression 'semicolon'
+
+sentence: assignment_stmt $
+reduce: stmt -> assignment_stmt
+
+sentence: stmt $
+reduce: stmts -> stmt
+
+sentence: stmts $
+reduce: g -> stmts
+
+result: g $

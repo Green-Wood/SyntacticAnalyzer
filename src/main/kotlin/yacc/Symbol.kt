@@ -1,8 +1,16 @@
 package yacc
 
 sealed class Symbol(val content: String) {
-    open class TerminalSymbol(content: String): Symbol(content)
-    class NonterminalSymbol(content: String): Symbol(content)
+    open class TerminalSymbol(content: String): Symbol(content) {
+        override fun toString(): String {
+            return "'$content'"
+        }
+    }
+    class NonterminalSymbol(content: String): Symbol(content) {
+        override fun toString(): String {
+            return content
+        }
+    }
     class EpsilonSymbol: TerminalSymbol("_")
 
     override fun equals(other: Any?): Boolean {

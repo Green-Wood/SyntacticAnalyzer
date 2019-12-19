@@ -8,8 +8,13 @@ internal class AnalyzeTableTest {
     @Test
     fun testInitTable() {
         val grammarString = """
-            {S} -> {A} a | b {A} c | d c | b d a
-            {A} -> d
+            S 
+                : A 'a' 
+                | 'b' A 'c' 
+                | 'd' 'c' 
+                | 'b' 'd' 'a'
+                ;
+            A : 'd'
         """.trimIndent()
         val analyzeTable = AnalyzeTable(grammarString)
         assertEquals(Action.Shift(3), analyzeTable.table[0 to Symbol.TerminalSymbol("b")])
@@ -21,9 +26,9 @@ internal class AnalyzeTableTest {
     @Test
     fun testTable2() {
         val grammarString = """
-            {S} -> {A} a | b {A} c | {B} c | b {B} a
-            {A} -> d
-            {B} -> d
+            S : A 'a' | 'b' A 'c' | B 'c' | 'b' B 'a';
+            A : 'd';
+            B : 'd'
         """.trimIndent()
         val analyzeTable = AnalyzeTable(grammarString)
         assertEquals(Action.Shift(3), analyzeTable.table[0 to Symbol.TerminalSymbol("b")])
@@ -38,8 +43,8 @@ internal class AnalyzeTableTest {
     @Test
     fun testTable3() {
         val grammarString = """
-            {S} -> {S} {A} | {A}
-            {A} -> a
+            S : S A | A;
+            A : 'a'
         """.trimIndent()
         val analyzeTable = AnalyzeTable(grammarString)
         assertEquals(12, analyzeTable.table.size)
@@ -54,7 +59,7 @@ internal class AnalyzeTableTest {
     @Test
     fun testTable4() {
         val grammarString = """
-            {E} -> {E} * {E} | {E} + {E} | id
+            E : E '*' E | E '+' E | 'id'
         """.trimIndent()
         val analyzeTable = AnalyzeTable(grammarString)
         assertEquals(18, analyzeTable.table.size)
@@ -66,7 +71,7 @@ internal class AnalyzeTableTest {
     @Test
     fun testReduce() {
         val grammarString = """
-            {E} -> {E} * {E} | {E} + {E} | id
+            E : E '*' E | E '+' E | 'id'
         """.trimIndent()
         val analyzeTable = AnalyzeTable(grammarString)
         val res = analyzeTable.reduce(listOf("id", "+", "id", "*", "id", "$"))
@@ -89,10 +94,10 @@ internal class AnalyzeTableTest {
     @Test
     fun testReduceDecimal() {
         val grammarString = """
-            {E} -> {E} * {E} | {E} + {E} | ( {E} ) | id
+            E : E '*' E | E '+' E | '(' E ')' | 'id';
         """.trimIndent()
         val analyzeTable = AnalyzeTable(grammarString)
-        val res = analyzeTable.reduce(listOf("(", "id", "+", "id", ")", "*", "id", "$"))
+        val res = analyzeTable.reduce(listOf("'('", "'id'", "'+'", "'id'", "')'", "'*'", "'id'", "$"))
         val except = """
             sentence: ( id + id ) * id ${'$'}
             reduce: E -> id
