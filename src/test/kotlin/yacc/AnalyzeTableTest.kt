@@ -85,4 +85,29 @@ internal class AnalyzeTableTest {
         """.trimIndent()
         assertEquals(except.lines(), res)
     }
+
+    @Test
+    fun testReduceDecimal() {
+        val grammarString = """
+            {E} -> {E} * {E} | {E} + {E} | ( {E} ) | id
+        """.trimIndent()
+        val analyzeTable = AnalyzeTable(grammarString)
+        val res = analyzeTable.reduce(listOf("(", "id", "+", "id", ")", "*", "id", "$"))
+        val except = """
+            sentence: ( id + id ) * id ${'$'}
+            reduce: E -> id
+            sentence: ( E + id ) * id ${'$'}
+            reduce: E -> id
+            sentence: ( E + E ) * id ${'$'}
+            reduce: E -> E + E
+            sentence: ( E ) * id ${'$'}
+            reduce: E -> ( E )
+            sentence: E * id ${'$'}
+            reduce: E -> id
+            sentence: E * E ${'$'}
+            reduce: E -> E * E
+            result: E ${'$'}
+        """.trimIndent()
+        assertEquals(except.lines(), res)
+    }
 }

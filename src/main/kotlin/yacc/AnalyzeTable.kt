@@ -93,13 +93,14 @@ class AnalyzeTable(grammarString: String) {
         val res: MutableList<String> = mutableListOf()
 
         val stateStack: Deque<Int> = ArrayDeque()
-        val symStack: Deque<String> = ArrayDeque()
 
         var scanner = 0
+        var tempPointer = 0
         var currSym = tokens.first()
         stateStack.push(0)
 
-        var tempTokens: List<String> = tokens.toMutableList()
+        // store the tokens after change
+        val tempTokens: MutableList<String> = tokens.toMutableList()
 
         var isAcc = false
         while (!isAcc) {
@@ -107,9 +108,9 @@ class AnalyzeTable(grammarString: String) {
             when(val action = table[s to Symbol.TerminalSymbol(currSym)]) {
                 is Action.Shift -> {
                     stateStack.push(action.id)
-                    symStack.push(currSym)
                     // move to next symbol
                     scanner += 1
+                    tempPointer += 1
                     currSym = tokens[scanner]
                 }
                 is Action.Reduce -> {
@@ -117,15 +118,18 @@ class AnalyzeTable(grammarString: String) {
                     val prod = grammar.prods[action.id]
                     // pop num |B|
                     res.add("sentence: " + tempTokens.joinToString(separator = " "))
-                    val deleteTokens = mutableListOf<String>()
+
                     for (symbol in prod.derive) {
+                        tempPointer -= 1
                         stateStack.pop()
-                        deleteTokens.add(symStack.pop())
+                        // replace E -> E * E with E
+                        tempTokens.removeAt(tempPointer)
                     }
-                    tempTokens = replaceFirst(tempTokens, deleteTokens, prod.symbol.content)
+                    tempTokens.add(tempPointer, prod.symbol.content)
+                    tempPointer += 1
+
                     // t is stack peek, so push(GOTO[t, A])
                     stateStack.push(table[stateStack.peek() to prod.symbol]!!.id)
-                    symStack.push(prod.symbol.content)
                     res.add("reduce: " + prod.getHumanString())
                 }
                 is Action.ACC -> {
