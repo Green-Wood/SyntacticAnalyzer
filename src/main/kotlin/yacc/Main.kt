@@ -6,7 +6,7 @@ import java.nio.file.Paths
 
 fun main() {
     val parser = LRParser("resources/CGF.y")
-    val res = parser.reduce("resources/input1.txt")
+    val res = parser.reduce("resources/input2.txt")
     val file = Paths.get("resources/output1.txt")
     Files.write(file, res, StandardCharsets.UTF_8)
 }
